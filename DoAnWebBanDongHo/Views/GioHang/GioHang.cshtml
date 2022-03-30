@@ -1,0 +1,136 @@
+﻿@using DoAnWebBanDongHo.Models
+@model List<GIOHANG>
+
+@{
+    ViewBag.Title = "GioHang";
+    
+}
+
+@*<h2 style="text-align:center">Thông tin giỏ hàng</h2>
+<table align="center" border="1" class="table">
+
+    <tr style="font-weight:bold; text-align:right; color:blue">
+        <td colspan="9">
+            @Html.ActionLink("Xóa giỏ hàng", "XoaTatCaGioHang")
+        </td>
+    </tr>
+
+    <tr style="text-align:center; font-weight:bold">
+        <td>Mã sản phẩm</td>
+        <td>Tên sản phẩm</td>
+        <td>Hình</td>
+        <td>Số lượng</td>
+        <td>Đơn giá</td>
+        <td>Thành tiền</td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="text-align:center; font-weight:bold">
+            <td>@item.iMasp</td>
+            <td><a href="/Sanpham/XemChiTiet?Masp=@item.iMasp">@item.sTensp</a></td>
+            <td><img src="~/Content/Images/@item.sHinh" alt="" height="75" width="75" /></td>
+            @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { @iMasp = item.iMasp }))
+            {
+                <td>
+                    <input type="number" value="@item.iSoLuong" min="1" name="txtSoluong" />
+                </td>
+                <td>@string.Format("{0:0,0}", item.dDonGia)<b>đ</b></td>
+                <td>@string.Format("{0:0,0}", item.dThanhTien)<b>đ</b></td>
+                <td><a href="@Url.Action("XemChiTiet","SanPham", new { @MaSP = item.iMasp })">Chi tiết</a></td>
+                <td>@Html.ActionLink("Xóa", "XoaGioHang", new { @iMaSP = item.iMasp })</td>
+                <td><input type="submit" value="Cập nhật" /></td>
+            }
+        </tr>
+    }
+</table>*@
+
+<div class="account-in">
+        <div class="container">
+            <div class="check_box">
+                <div class="col-md-9 cart-items">
+                    <h1>Giỏ Hàng Của Bạn</h1>
+                    <tr style="font-weight:bold; text-align:right; color:blue">
+                        <td colspan="9">
+                            @Html.ActionLink("Xóa giỏ hàng", "XoaTatCaGioHang")
+                        </td>
+                    </tr>
+                    
+
+                    @foreach (var item in Model)
+                    {
+                        <script>
+                            $(document).ready(function (c) {
+                                $('.close1').on('click', function (c) {
+                                    $('.cart-header').fadeOut('slow', function (c) {
+                                        $('.cart-header').remove();
+                                    });
+                                });
+                            });
+                        </script>
+                        <div class="cart-header">
+                            @Html.ActionLink("Xóa", "XoaGioHang", new { @iMaSP = item.iMasp })
+                            <div class="cart-sec simpleCart_shelfItem">
+                                <div class="cart-item cyc">
+                                    <img src="~/Content/Images/@item.sHinh" class="img-responsive" alt="" />
+                                </div>
+                                <div class="cart-item-info">
+                                    <h3><a href="/Sanpham/XemChiTiet?Masp=@item.iMasp">@item.sTensp</a><span>Model No: @item.iMasp</span></h3>
+                                    @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { @iMasp = item.iMasp }))
+                                    {
+                                        <div>
+                                            <b>Số lượng: </b><input type="number" value="@item.iSoLuong" min="1" name="txtSoluong" />
+
+                                        </div>
+                                        <div><p>Đơn giá: @string.Format("{0:0,0}", item.dDonGia)<b>đ</b></p></div>
+                                        <div><p>Thành tiền: @string.Format("{0:0,0}", item.dThanhTien)<b>đ</b></p></div>
+                                        <ul class="qty">
+                                            <li><p>Size : 5</p></li>
+                                            <li><p>Qty : 1</p></li>
+                                        </ul>
+                                        <td><input type="submit" value="Cập nhật" /></td>
+                                        @ViewBag.Fail
+                                        <div class="delivery">
+                                            <span>Giao hàng từ 3-4 ngày</span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    }
+                </div>            
+
+                <div class="col-md-3 cart-total">
+                    <a class="continue" href="/Sanpham/Index">Tiếp tục mua hàng</a>
+                    <div class="price-details">
+                        <h3>Chi tiết thanh toán</h3>
+                        <span>Số lượng</span>
+                        <span class="total1">@ViewBag.Tongsoluong</span>
+                        <span>Discount</span>
+                        <span class="total1">---</span>
+                        <span>Phí vận chuyển</span>
+                        <span class="total1">50000đ</span>
+                        <div class="clearfix"></div>
+                    </div>
+                    <ul class="total_price">
+                        <li class="last_price"> <h4>TỔNG TIỀN</h4></li>
+                        <li class="last_price"><span>@String.Format("{0:0,0}", ViewBag.Tongtien) VND</span></li>
+                        <div class="clearfix"> </div>
+                    </ul>
+                    <div class="clearfix"></div>
+                    <a class="order" href="/GioHang/DatHang">Mua Ngay</a>
+                    <div class="total-item">
+                        <h3>OPTIONS</h3>
+                        <h4>COUPONS</h4>
+                        <a class="cpns" href="#">Nhập Coupons</a>
+                        <p><a href="/user/DangNhap">Đăng nhập</a> để sử dụng coupons</p>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+   

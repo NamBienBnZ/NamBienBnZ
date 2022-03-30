@@ -1,0 +1,26 @@
+﻿@model DoAnWebBanDongHo.Models.LOGINMODEL
+@{
+    ViewBag.Title = "DangXuat";
+    Layout = "~/Views/Shared/_Mainlayout.cshtml";
+}
+
+<h2>DangXuat</h2>
+
+
+<div class="btn-outline-success">
+    
+        <h3>Đăng Xuất</h3>
+        @using (Html.BeginForm("Đăng Xuất", "User"))
+        {
+            @Html.AntiForgeryToken()
+            <div class="col-md-7 account-top">
+                        <div class="col-md-offset-2 col-md-10"> 
+                            @*<a href="~/Views/User/DangNhap.cshtml">D</a>*@
+                           <input type="submit" value="Đăng xuất" class="btn btn-default" />
+                           <script>
+                               alert('Đăng xuất thành công')
+                           </script>
+                        </div>
+                    </div>
+</div>
+        }

@@ -1,0 +1,72 @@
+﻿@model DoAnWebBanDongHo.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>XÓA KHÁCH HÀNG</h2>
+
+<h3>Bạn có thực sự muốn xóa?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên tài khoản
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TAIKHOAN.TENTK)
+        </dd>
+
+        <dt>
+            Tên khách hàng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENKH)
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL)
+        </dd>
+
+        <dt>
+            Số điện thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+
+        <dt>
+            Giới tính
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GIOITINH)
+        </dd>
+
+        <dt>
+            Địa chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIACHI)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

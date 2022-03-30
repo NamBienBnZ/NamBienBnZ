@@ -1,0 +1,40 @@
+﻿@model DoAnWebBanDongHo.Models.THUONGHIEU
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>XÓA THƯƠNG HIỆU</h2>
+
+<h3>Bạn có thực sự muốn xóa?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên thương hiệu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENTH)
+        </dd>
+
+        <dt>
+            Hình thương hiệu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HINHTH)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

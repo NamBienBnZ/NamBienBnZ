@@ -1,0 +1,19 @@
+﻿@using DoAnWebBanDongHo.Models;
+@model List<THUONGHIEU>
+
+<style>
+    .btncustom {
+        position: absolute;
+    }
+</style>
+<div class="bg-success" style="height: 80px; margin-left: -15px; width: 1170px">
+    <h3> THƯƠNG HIỆU  </h3>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-2">
+                <button class="success btncustom"><a href="@Url.Action("Show", new {@MaTH = item.MATH })"> @item.TENTH</a></button>
+            </div>
+        }
+    </div>
+</div>

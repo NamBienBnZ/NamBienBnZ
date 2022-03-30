@@ -1,0 +1,130 @@
+﻿@{
+    ViewBag.Title = "Frederuque Constant";
+    Layout = "~/Views/Shared/_Mainlayout.cshtml";
+}
+
+<div class="men">
+    <div class="container">
+        <div class="col-md-4 sidebar_men">
+            <h3>Thương Hiệu</h3>
+            <ul class="product-categories color">
+                <
+                <li class="cat-item cat-item-42"><a href="/Sanpham/THTissot">Tissot</a> <span class="count">(14)</span></li>
+                <li class="cat-item cat-item-60"><a href="/Sanpham/THFrederiqueConstant">Frederique Constant</a> <span class="count">(2)</span></li>
+                <li class="cat-item cat-item-63"><a href="/Sanpham/THCalvinKlein">Calvin Klein</a> <span class="count">(2)</span></li>
+                <li class="cat-item cat-item-54"><a href="#">Jeans</a> <span class="count">(8)</span></li>
+                <li class="cat-item cat-item-55"><a href="#">Shoes</a> <span class="count">(11)</span></li>
+                <li class="cat-item cat-item-64"><a href="#">Shorts</a> <span class="count">(3)</span></li>
+                <li class="cat-item cat-item-61"><a href="#">Skirts</a> <span class="count">(3)</span></li>
+                <li class="cat-item cat-item-56"><a href="#">Sweaters</a> <span class="count">(6)</span></li>
+                <li class="cat-item cat-item-57"><a href="#">T-Shirts</a> <span class="count">(13)</span></li>
+                <li class="cat-item cat-item-58"><a href="#">Tops</a> <span class="count">(7)</span></li>
+                <li class="cat-item cat-item-62"><a href="#">Watchers</a> <span class="count">(2)</span></li>
+                <li class="cat-item cat-item-41"><a href="#">Women</a> <span class="count">(17)</span></li>
+            </ul>
+            <h3>Màu sắc</h3>
+            <ul class="product-categories color">
+                <li class="cat-item cat-item-42"><a href="#">Xanh</a> <span class="count">(14)</span></li>
+                <li class="cat-item cat-item-60"><a href="#">Vàng</a> <span class="count">(2)</span></li>
+                <li class="cat-item cat-item-63"><a href="#">Đỏ</a> <span class="count">(2)</span></li>
+                <li class="cat-item cat-item-54"><a href="#">Bạc</a> <span class="count">(8)</span></li>
+                <li class="cat-item cat-item-55"><a href="#">Hồng</a> <span class="count">(11)</span></li>
+            </ul>
+            <h3>Kích cỡ</h3>
+            <ul class="product-categories color">
+                <li class="cat-item cat-item-42"><a href="#">L</a> <span class="count">(14)</span></li>
+                <li class="cat-item cat-item-60"><a href="#">M</a> <span class="count">(2)</span></li>
+                <li class="cat-item cat-item-63"><a href="#">S</a> <span class="count">(2)</span></li>
+                <li class="cat-item cat-item-54"><a href="#">XL</a> <span class="count">(8)</span></li>
+                <li class="cat-item cat-item-55"><a href="#">XS</a> <span class="count">(11)</span></li>
+            </ul>
+            <h3>Giá</h3>
+            <ul class="product-categories">
+                <li class="cat-item cat-item-42"><a href="#">200k-300k</a> <span class="count">(14)</span></li>
+                <li class="cat-item cat-item-60"><a href="#">3000k-4000k</a> <span class="count">(2)</span></li>
+                <li class="cat-item cat-item-63"><a href="#">4000k-5000k</a> <span class="count">(2)</span></li>
+                <li class="cat-item cat-item-54"><a href="#">5000k-6000k</a> <span class="count">(8)</span></li>
+                <li class="cat-item cat-item-55"><a href="#">6000k-7000k</a> <span class="count">(11)</span></li>
+            </ul>
+        </div>
+        <div class="col-md-8 mens_right">
+            <div class="dreamcrub">
+                <ul class="breadcrumbs">
+                    <li class="home">
+                        <a href="/Home/Index" title="Về trang chính">Home</a>&nbsp;
+                        <span>&gt;</span>
+                    </li>
+                    <li class="home">
+                        &nbsp;
+                        Nam / Nữ&nbsp;
+                    </li>
+                </ul>
+                <ul class="previous">
+                    <li><a href="/Home/Index">Quay lại trang trước</a></li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="mens-toolbar">
+                <div class="sort">
+                    <div class="sort-by">
+                        <label>Sort By</label>
+                        <select>
+                            <option value="">
+                                Vị trí
+                            </option>
+                            <option value="">
+                                Tên
+                            </option>
+                            <option value="">
+                                Giá
+                            </option>
+                        </select>
+                        <a href=""><img src="~/Content/Images/arrow2.gif" alt="" class="v-middle"></a>
+                    </div>
+                </div>
+                <ul class="women_pagenation dc_paginationA dc_paginationA06">
+                    <li><a href="#" class="previous">Trang : </a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="clearfix"></div>
+            <ul @foreach (var item in Model) {<li class="simpleCart_shelfItem">
+                               <a href="@Url.Action("XemChiTiet", new { @Masp = item.MASP })">
+                                   <div class="view view-first">
+                                       <div class="inner_content clearfix">
+                                           <div class="product_image">
+                                               <div class="mask1"><img src="~/Content/Images/@Url.Content(item.HINH)" alt="image" class="img-responsive zoom-img"></div>
+                                               <div class="mask">
+                                                   <div class="info">Xem nhanh</div>
+                                               </div>
+                                               <div class="product_container">
+                                                   <h4>@item.TENSP</h4>
+                                                   <p>@item.MOTA</p>
+                                                   <div class="price mount item_price">@item.DONGIA</div>
+                                                   @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMasp = item.MASP, @strURL = Request.Url.ToString() }))
+                                                   {
+                                                       <input type="submit"  value="Thêm vào giỏ hàng" id="bgnGioHang" />
+
+                                                   }
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </a>
+                           </li>
+                       }
+                </ul>
+           
+
+            <script src="~/Content/js/cbpViewModeSwitch.js" type="text/javascript"></script>
+            <script src="~/Content/js/classie.js" type="text/javascript"></script>
+        </div>
+    </div>
+</div>
+
+
+
+

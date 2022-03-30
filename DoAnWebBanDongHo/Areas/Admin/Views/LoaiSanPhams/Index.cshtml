@@ -1,0 +1,40 @@
+﻿@model IEnumerable<DoAnWebBanDongHo.Models.LOAISANPHAM>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Loại Sản Phẩm</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Mã loại sản phẩm
+        </th>
+        <th>
+            Tên loại sản phẩm
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MALOAISP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TENLOAISP)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.MALOAISP }) |
+            @Html.ActionLink("Chi Tiết", "Details", new { id=item.MALOAISP }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.MALOAISP })
+        </td>
+    </tr>
+}
+
+</table>
